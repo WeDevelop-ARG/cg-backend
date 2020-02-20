@@ -1,0 +1,25 @@
+# Types
+type Payment {
+    id: ID!
+    productId: String!
+    paymentId: Int!
+    status: String!
+    statusDetail: String!
+    dateApproved: Date!
+    paymentMethodId: String!
+    paymentTypeId: String!
+    payerEmail: String!
+}
+
+type PaymentInput {
+    amount: Float!
+    token: String!
+    description: String
+    paymentMethod: String!
+    email: String!
+}
+
+# Mutation
+extend type mutation {
+    reservePayment(input: PaymentInput!): Payment!
+}
