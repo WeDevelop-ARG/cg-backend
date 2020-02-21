@@ -1,12 +1,12 @@
 # Types
-type checkoutResult {
+type CheckoutResult {
     id: ID!
     productId: String!
     paymentId: Int!
     status: String!
     statusDetail: String!
     dateApproved: Date!
-    paymentMethodId: String!
+    paymentMethodId: PaymentMethodEnum!
     paymentTypeId: String!
     payerEmail: String!
 }
@@ -14,23 +14,22 @@ type checkoutResult {
 input CheckoutInput {
   productId: ID!
   paymentMethod: MercadoPagoInput!
-  amount: Float!
 }
 
 input MercadoPagoInput {
   accountEmail: String!
   token: String!
-  paypaymentMethod: PaymentMethodEnum!
+  paymentMethod: PaymentMethodEnum!
 }
 
 enum PaymentMethodEnum {
-  VISA
-  MASTER
-  AMEX
-  DEBIT_CARD
+  visa
+  master
+  amex
+  debit_card
 }
 
 # Mutation
-extend type mutation {
-    checkout(input: CheckoutInput!): checkoutResult!
+extend type Mutation {
+  checkout(input: CheckoutInput!): CheckoutResult!
 }
