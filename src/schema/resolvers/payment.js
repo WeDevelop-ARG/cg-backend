@@ -1,8 +1,8 @@
-import * as paymentController from '~/src/controllers/payment'
+import * as checkoutController from '~/src/controllers/checkout'
 
 const resolvers = {
   Mutation: {
-    checkout: paymentController.checkout
+    checkout: checkoutController.checkout
   }
 }
 
