@@ -2,7 +2,7 @@ import PaymentError from '~/src/errors/payment-error'
 import mercadopago from 'mercadopago'
 import faker from 'faker'
 
-mercadopago.configurations.setAccessToken('TEST-1975651894202504-021815-0e6f3e6fafe6eb28bd68353c5fce8824-528302578')
+mercadopago.configurations.setAccessToken(process.env.ACCESS_TOKEN)
 
 const generateArgumentsForPaymentCreate = (args) => ({
   transaction_amount: Number.parseFloat(faker.finance.amount(1, 1000, 2)),
