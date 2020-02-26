@@ -2,6 +2,7 @@ import express from 'express'
 import Sequelize from 'sequelize'
 import { ApolloServer } from 'apollo-server-express'
 import { createServer } from 'http'
+import * as models from '~/src/models'
 
 import schema from './schema'
 

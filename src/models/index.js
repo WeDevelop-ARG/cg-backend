@@ -1,6 +1,6 @@
 import path from 'path'
 import fs from 'fs'
-import Sequelize from 'sequelize-views-support'
+import Sequelize from 'sequelize'
 
 const sequelize = new Sequelize(require('~/src/config/sequelize')())
 const sequelizeModels = {}
