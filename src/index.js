@@ -1,4 +1,5 @@
 import express from 'express'
+import Sequelize from 'sequelize'
 import { ApolloServer } from 'apollo-server-express'
 import { createServer } from 'http'
 
@@ -14,7 +15,11 @@ const server = new ApolloServer({
   ...schema,
   instrospection: true,
   playground: true,
-  tracing: true
+  tracing: true,
+  context: () => ({
+    models,
+    sequelize: new Sequelize(require('~/src/config/sequelize')())
+  })
 })
 
 server.applyMiddleware({ app })
