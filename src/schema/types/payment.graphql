@@ -1,0 +1,35 @@
+# Types
+type CheckoutResult {
+  id: ID!
+  productId: String!
+  paymentId: Int!
+  status: String!
+  statusDetail: String!
+  dateApproved: Date!
+  paymentMethodId: PaymentMethodEnum!
+  paymentTypeId: String!
+  payerEmail: String!
+}
+
+input CheckoutInput {
+  productId: ID!
+  paymentMethod: MercadoPagoInput!
+}
+
+input MercadoPagoInput {
+  accountEmail: String!
+  token: String!
+  paymentMethod: PaymentMethodEnum!
+}
+
+enum PaymentMethodEnum {
+  visa
+  master
+  amex
+  debit_card
+}
+
+# Mutation
+extend type Mutation {
+  checkout(input: CheckoutInput!): CheckoutResult!
+}
