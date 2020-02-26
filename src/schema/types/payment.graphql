@@ -1,14 +1,14 @@
 # Types
 type CheckoutResult {
-    id: ID!
-    productId: String!
-    paymentId: Int!
-    status: String!
-    statusDetail: String!
-    dateApproved: Date!
-    paymentMethodId: PaymentMethodEnum!
-    paymentTypeId: String!
-    payerEmail: String!
+  id: ID!
+  productId: String!
+  paymentId: Int!
+  status: String!
+  statusDetail: String!
+  dateApproved: Date!
+  paymentMethodId: PaymentMethodEnum!
+  paymentTypeId: String!
+  payerEmail: String!
 }
 
 input CheckoutInput {
