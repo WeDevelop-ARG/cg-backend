@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+    commands:
+      - npm install
+  build:
+    commands:
+      - npm run build
+
+artifacts:
+  files:
+    - 'dist/**/*'
+    - 'config/**/*'
+    - 'src/**/*'
+    - 'appspec.yml'
+    - 'codedeploy/**/*'
+    - 'package.json'
+    - 'package-lock.json'
+    - '.sequelizerc'

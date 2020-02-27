@@ -1,0 +1,21 @@
+version: 0.0
+os: linux
+
+files:
+  - source: /
+    destination: /home/ubuntu/cg-backend
+
+hooks:
+  ApplicationStop:
+    - location: codedeploy/app-stop.sh
+      runas: ubuntu
+  BeforeInstall:
+    - location: codedeploy/cleanup-destination.sh
+  AfterInstall:
+    - location: codedeploy/adjust-permissions.sh
+    - location: codedeploy/install-dependencies.sh
+    - location: codedeploy/migrate-db.sh
+      runas: ubuntu
+  ApplicationStart:
+    - location: codedeploy/app-start.sh
+      runas: ubuntu
