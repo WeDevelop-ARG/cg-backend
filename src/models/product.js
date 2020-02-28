@@ -14,7 +14,7 @@ export default (sequelize, DataTypes) => sequelize.define('product', {
   },
   description: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   price: {
     type: DataTypes.DECIMAL(10, 2),
