@@ -9,8 +9,7 @@
     "build": "npm run cleanup && babel src -D -d dist",
     "start": "node dist/index.js",
     "cleanup": "rm -rf dist",
-    "db-migrate": "npx sequelize db:migrate",
-    "db-reset": "npx sequelize db:migrate:undo:all"
+    "db:migrate": "npx sequelize db:migrate"
   },
   "keywords": [
     "Node.js",
