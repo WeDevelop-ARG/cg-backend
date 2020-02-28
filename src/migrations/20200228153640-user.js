@@ -4,9 +4,10 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     const tableFields = {
       id: {
-        type: Sequelize.INTEGER.UNSIGNED,
+        type: DataTypes.UUID,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
+        defaultValue: DataTypes.UUIDV4
       },
       photoUrl: {
         type: Sequelize.STRING,

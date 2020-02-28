@@ -4,25 +4,26 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     const tableFields = {
       id: {
-        type: Sequelize.INTEGER.UNSIGNED,
+        type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
+        defaultValue: DataTypes.UUIDV4
       },
       productId: {
-        type: Sequelize.INTEGER.UNSIGNED,
+        type: DataTypes.UUID,
         allowNull: false,
         references: {
           model: 'product',
-          key: 'id',
-        },
+          key: 'id'
+        }
       },
       userId: {
-        type: Sequelize.INTEGER.UNSIGNED,
+        type: DataTypes.UUID,
         allowNull: false,
         references: {
           model: 'user',
-          key: 'id',
-        },
+          key: 'id'
+        }
       },
       isComplete: {
         type: Sequelize.BOOLEAN,
