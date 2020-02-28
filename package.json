@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon -w src --config --ext js,graphql --exec \"babel-node src\"",
+    "dev:with-migrations": "npx sequelize db:migrate && npm run dev",
     "build": "npm run cleanup && babel src -D -d dist",
     "start": "node dist/index.js",
     "cleanup": "rm -rf dist"
