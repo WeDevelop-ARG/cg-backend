@@ -29,7 +29,7 @@ export default (sequelize, DataTypes) => sequelize.define('user', {
     type: DataTypes.DATE
   },
   updatedAt: {
-    allowNull: false,
+    allowNull: true,
     type: DataTypes.DATE
   }
 }, { freezeTableName: true })

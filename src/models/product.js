@@ -2,7 +2,6 @@ export default (sequelize, DataTypes) => sequelize.define('product', {
   id: {
     type: DataTypes.UUID,
     primaryKey: true,
-    autoIncrement: true,
     defaultValue: DataTypes.UUIDV4
   },
   photoUrl: {
@@ -31,6 +30,6 @@ export default (sequelize, DataTypes) => sequelize.define('product', {
   },
   updatedAt: {
     type: DataTypes.DATE,
-    allowNull: false
+    allowNull: true
   }
 }, { freezeTableName: true })

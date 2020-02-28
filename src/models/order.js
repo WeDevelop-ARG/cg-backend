@@ -35,6 +35,6 @@ export default (sequelize, DataTypes) => sequelize.define('order', {
   },
   updatedAt: {
     type: DataTypes.DATE,
-    allowNull: false
+    allowNull: true
   }
 }, { freezeTableName: true })
