@@ -2,11 +2,11 @@ type Product {
   id: ID!
   photoUrl: String!
   name: String!
-  description: String!
+  description: String
   price: Float!
   marketPrice: Float!
 }
 
-type Query {
+extend type Query {
   products: [Product]!
 }
