@@ -1,13 +1,13 @@
-'use strict';
+'use strict'
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
     const tableFields = {
       id: {
-        type: DataTypes.UUID,
+        type: Sequelize.UUID,
         primaryKey: true,
         autoIncrement: true,
-        defaultValue: DataTypes.UUIDV4
+        defaultValue: Sequelize.UUIDV4
       },
       photoUrl: {
         type: Sequelize.STRING,
@@ -31,11 +31,11 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.DATE
       }
     }
 
@@ -45,4 +45,4 @@ module.exports = {
   down: (queryInterface) => {
     return queryInterface.dropTable('product')
   }
-};
+}
