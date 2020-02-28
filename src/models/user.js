@@ -2,7 +2,6 @@ export default (sequelize, DataTypes) => sequelize.define('user', {
   id: {
     type: DataTypes.UUID,
     primaryKey: true,
-    autoIncrement: true,
     defaultValue: DataTypes.UUIDV4
   },
   photoUrl: {

@@ -2,7 +2,6 @@ export default (sequelize, DataTypes) => sequelize.define('order', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoIncrement: true,
     defaultValue: DataTypes.UUIDV4
   },
   productId: {

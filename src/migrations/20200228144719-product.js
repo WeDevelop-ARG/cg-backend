@@ -6,7 +6,6 @@ module.exports = {
       id: {
         type: Sequelize.UUID,
         primaryKey: true,
-        autoIncrement: true,
         defaultValue: Sequelize.UUIDV4
       },
       photoUrl: {
