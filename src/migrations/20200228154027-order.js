@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    const tableFields = {
+    return queryInterface.createTable('order', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -42,9 +42,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    }
-
-    return queryInterface.createTable('order', tableFields)
+    })
   },
 
   down: (queryInterface) => {

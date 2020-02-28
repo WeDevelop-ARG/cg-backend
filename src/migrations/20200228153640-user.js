@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    const tableFields = {
+    return queryInterface.createTable('user', {
       id: {
         type: Sequelize.UUID,
         primaryKey: true,
@@ -37,9 +37,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    }
-
-    return queryInterface.createTable('user', tableFields)
+    })
   },
 
   down: (queryInterface) => {
