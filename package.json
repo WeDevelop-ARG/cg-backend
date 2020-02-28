@@ -35,6 +35,6 @@
     "@babel/preset-env": "^7.2.3",
     "babel-plugin-root-import": "^6.1.0",
     "nodemon": "^1.18.9",
-    "standardjs": "^1.0.0-alpha"
+    "standard": "^14.3.1"
   }
 }
