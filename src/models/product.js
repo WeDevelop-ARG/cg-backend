@@ -24,4 +24,4 @@ export default (sequelize, DataTypes) => sequelize.define('product', {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: false
   }
-}, { freezeTableName: true })
+})
