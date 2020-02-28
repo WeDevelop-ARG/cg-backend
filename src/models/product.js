@@ -23,13 +23,5 @@ export default (sequelize, DataTypes) => sequelize.define('product', {
   marketPrice: {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: false
-  },
-  createdAt: {
-    type: DataTypes.DATE,
-    allowNull: false
-  },
-  updatedAt: {
-    type: DataTypes.DATE,
-    allowNull: true
   }
 }, { freezeTableName: true })

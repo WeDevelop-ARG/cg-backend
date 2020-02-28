@@ -28,13 +28,5 @@ export default (sequelize, DataTypes) => sequelize.define('order', {
   price: {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: false
-  },
-  createdAt: {
-    type: DataTypes.DATE,
-    allowNull: false
-  },
-  updatedAt: {
-    type: DataTypes.DATE,
-    allowNull: true
   }
 }, { freezeTableName: true })

@@ -23,13 +23,5 @@ export default (sequelize, DataTypes) => sequelize.define('user', {
   password: {
     type: DataTypes.STRING,
     allowNull: false
-  },
-  createdAt: {
-    allowNull: false,
-    type: DataTypes.DATE
-  },
-  updatedAt: {
-    allowNull: true,
-    type: DataTypes.DATE
   }
 }, { freezeTableName: true })
