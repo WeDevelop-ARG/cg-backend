@@ -1,0 +1,47 @@
+version: '3.7'
+
+services:
+
+  cg-db:
+    container_name: cg-db
+    image: postgres:11-alpine
+    environment:
+    - POSTGRES_DB=${DB_NAME}
+    - POSTGRES_USER=${DB_USER}
+    - POSTGRES_PASSWORD=${DB_PASSWORD}
+
+  cg-backend:
+    container_name: cg-backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    depends_on:
+      - cg-db
+    working_dir:
+      "/usr/src/app"
+    volumes:
+      - '.:/usr/src/app'
+      - "/usr/src/app/node_modules"
+    environment: 
+      - PORT=3001
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=cg-db
+      - DB_PORT=${DB_PORT}
+    command: ['npm', 'run', 'dev:with-migrations']
+
+  cg-frontend:
+    container_name: cg-frontend
+    build:
+      context: ../cg-frontend
+      dockerfile: Dockerfile
+    volumes:
+      - '../cg-frontend:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - 3000:3000
+    depends_on:
+      - cg-backend
