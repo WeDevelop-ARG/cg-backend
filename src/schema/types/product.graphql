@@ -8,5 +8,6 @@ type Product {
 }
 
 extend type Query {
-  getProducts: [Product!]!
+  products: [Product!]!
+  product(id: ID!) : Product
 }
