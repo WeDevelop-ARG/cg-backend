@@ -2,8 +2,8 @@ import * as productController from '~/src/controllers/product'
 
 const resolvers = {
   Query: {
-    getProducts: productController.getProducts,
-    getProductById: (obj, { id }) => productController.getProductById(id)
+    products: productController.getProducts,
+    product: (obj, { id }) => productController.getProductById(id)
   }
 }
 
