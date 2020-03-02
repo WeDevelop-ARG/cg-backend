@@ -1,3 +1,3 @@
-import getProductsHandler from './getProductsHandler'
+import { product } from '~/src/models'
 
-export const getProducts = () => getProductsHandler()
+export const getProducts = () => product.findAll()
