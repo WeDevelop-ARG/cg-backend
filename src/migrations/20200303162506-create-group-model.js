@@ -1,0 +1,55 @@
+'use strict'
+
+module.exports = {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable('group', {
+      id: {
+        type: Sequelize.UUID,
+        primaryKey: true,
+        defaultValue: Sequelize.UUIDV4
+      },
+      productId: {
+        type: Sequelize.UUID,
+        allowNull: false,
+        references: {
+          model: 'product',
+          key: 'id'
+        }
+      },
+      type: {
+        type: Sequelize.ENUM,
+        values: [
+          'PAIRED',
+          'SMALL_GROUP',
+          'BIG_GROUP'
+        ],
+        allowNull: false
+      },
+      deadline: {
+        type: Sequelize.DATE,
+        allowNull: false
+      },
+      status: {
+        type: Sequelize.ENUM,
+        values: [
+          'COMPLETE',
+          'INCOMPLETE',
+          'EXPIRED'
+        ],
+        allowNull: false
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: true,
+        type: Sequelize.DATE
+      }
+    })
+  },
+
+  down: (queryInterface) => {
+    return queryInterface.dropTable('group')
+  }
+}
