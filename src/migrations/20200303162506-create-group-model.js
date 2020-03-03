@@ -19,23 +19,13 @@ module.exports = {
       type: {
         type: Sequelize.ENUM,
         values: [
-          'PAIRED',
-          'SMALL_GROUP',
-          'BIG_GROUP'
+          'PAIR',
+          'GROUP'
         ],
         allowNull: false
       },
       deadline: {
         type: Sequelize.DATE,
-        allowNull: false
-      },
-      status: {
-        type: Sequelize.ENUM,
-        values: [
-          'COMPLETE',
-          'INCOMPLETE',
-          'EXPIRED'
-        ],
         allowNull: false
       },
       createdAt: {

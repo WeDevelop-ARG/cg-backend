@@ -5,30 +5,16 @@ export default (sequelize, DataTypes) => {
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4
     },
-    productId: {
-      type: DataTypes.UUID,
-      allowNull: false
-    },
     type: {
       type: DataTypes.ENUM,
       values: [
-        'PAIRED',
-        'SMALL_GROUP',
-        'BIG_GROUP'
+        'PAIR',
+        'GROUP',
       ],
       allowNull: false
     },
-    deadline: {
+    ExpiresAt: {
       type: DataTypes.DATE,
-      allowNull: false
-    },
-    status: {
-      type: DataTypes.ENUM,
-      values: [
-        'COMPLETE',
-        'INCOMPLETE',
-        'EXPIRED'
-      ],
       allowNull: false
     },
   })
