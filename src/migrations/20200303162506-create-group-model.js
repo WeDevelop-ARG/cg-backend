@@ -24,10 +24,6 @@ module.exports = {
         ],
         allowNull: false
       },
-      deadline: {
-        type: Sequelize.DATE,
-        allowNull: false
-      },
       discount: {
         type: Sequelize.FLOAT,
         allowNull: false
