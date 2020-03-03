@@ -9,7 +9,7 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.ENUM,
       values: [
         'PAIR',
-        'GROUP',
+        'GROUP'
       ],
       allowNull: false
     },
