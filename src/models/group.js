@@ -13,10 +13,14 @@ export default (sequelize, DataTypes) => {
       ],
       allowNull: false
     },
-    ExpiresAt: {
-      type: DataTypes.DATE,
+    discount: {
+      type: DataTypes.FLOAT,
       allowNull: false
     },
+    expiresAt: {
+      type: DataTypes.DATE,
+      allowNull: false
+    }
   })
 
   // Associations
