@@ -1,0 +1,19 @@
+type Group {
+  id: ID!
+  product: Product!
+  type: TypeEnum!
+  minParticipants: Int!
+  maxParticipants: Int
+  name: String!
+  discount: String
+  expiresAt: Date!
+}
+
+enum TypeEnum {
+  PAIR
+  GROUP
+}
+
+extend type Query {
+  groups: [Group!]!
+}
