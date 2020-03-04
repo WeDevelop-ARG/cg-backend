@@ -13,8 +13,16 @@ export default (sequelize, DataTypes) => {
       ],
       allowNull: false
     },
+    minParticipants: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    maxParticipants: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
     discount: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     expiresAt: {

@@ -24,8 +24,16 @@ module.exports = {
         ],
         allowNull: false
       },
+      minParticipants: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      maxParticipants: {
+        type: Sequelize.INTEGER,
+        allowNull: true
+      },
       discount: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.INTEGER,
         allowNull: false
       },
       expiresAt: {
