@@ -1,14 +1,14 @@
 type Group {
   id: ID!
   product: Product!
-  type: TypeEnum!
+  type: GroupTypeEnum!
   minParticipants: Int!
   maxParticipants: Int
   discount: Int!
   expiresAt: Date!
 }
 
-enum TypeEnum {
+enum GroupTypeEnum {
   PAIR
   GROUP
 }
