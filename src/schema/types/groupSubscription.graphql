@@ -1,0 +1,12 @@
+type GroupSubscription {
+  id: ID!
+}
+
+input GroupSubscriptionInput {
+  userId: ID!
+  groupId: ID!
+}
+
+extend type Mutation {
+  subscribeToGroup(input: GroupSubscriptionInput!): GroupSubscription!
+}
