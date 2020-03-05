@@ -13,6 +13,27 @@ enum GroupTypeEnum {
   GROUP
 }
 
+input GroupInput {
+  id: ID!
+  productId: ID!
+  type: GroupTypeEnum!
+  minParticipants: Int!
+  maxParticipants: Int
+  discount: Int!
+  expiresAt: Date!
+}
+
+input GroupDiff {
+  new: [GroupInput]
+  updated: [GroupInput]
+  deleted: [ID]
+}
+
 extend type Query {
   groups: [Group!]!
+}
+
+# Mutations
+extend type Mutation {
+  processGroupDifferences(input: GroupDiff!): Boolean!
 }
