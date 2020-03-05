@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('subscription', {
+    return queryInterface.createTable('groupSubscription', {
       id: {
         type: Sequelize.UUID,
         primaryKey: true,

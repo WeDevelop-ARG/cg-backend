@@ -1,4 +1,4 @@
-type Subscription {
+type GroupSubscription {
   id: ID!
 }
 
@@ -8,5 +8,5 @@ input GroupSubscriptionInput {
 }
 
 extend type Mutation {
-  subscribeToGroup(input: GroupSubscriptionInput!): Subscription!
+  subscribeToGroup(input: GroupSubscriptionInput!): GroupSubscription!
 }
