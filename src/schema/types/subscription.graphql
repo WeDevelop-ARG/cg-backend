@@ -1,5 +1,14 @@
 type Subscription {
   id: ID!
-  userId: String!
-  groupId: String!
+  userId: ID!
+  groupId: ID!
+}
+
+input GroupSubscriptionInput {
+  userId: ID!
+  groupId: ID!
+}
+
+extend type Mutation {
+  subscribeToGroup(input: GroupSubscriptionInput!): Subscription!
 }
