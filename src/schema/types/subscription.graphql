@@ -1,0 +1,5 @@
+type Subscription {
+  id: ID!
+  userId: String!
+  groupId: String!
+}
