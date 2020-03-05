@@ -23,17 +23,11 @@ input GroupInput {
   expiresAt: Date!
 }
 
-input GroupDiff {
-  new: [GroupInput]
-  updated: [GroupInput]
-  deleted: [ID]
-}
-
 extend type Query {
   groups: [Group!]!
 }
 
 # Mutations
 extend type Mutation {
-  processGroupDifferences(input: GroupDiff!): Boolean!
+  processGroupDifferences(input: GroupInput!): Group!
 }

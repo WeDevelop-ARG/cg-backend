@@ -8,7 +8,7 @@ const resolvers = {
     groups: groupController.getGroups
   },
   Mutation: {
-    processGroupDifferences: groupController.processDifferences
+    processGroupDifferences: groupController.createGroup
   }
 }
 
