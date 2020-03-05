@@ -29,5 +29,5 @@ extend type Query {
 
 # Mutations
 extend type Mutation {
-  processGroupDifferences(input: GroupInput!): Group!
+  createGroup(input: GroupInput!): Group!
 }
