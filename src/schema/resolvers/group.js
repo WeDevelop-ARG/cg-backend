@@ -2,7 +2,8 @@ import * as groupController from '~/src/controllers/group'
 
 const resolvers = {
   Group: {
-    product: groupController.getProduct
+    product: groupController.getProduct,
+    participantsCount: groupController.getParticipantsCount
   },
   Query: {
     groups: groupController.getGroups

@@ -4,6 +4,7 @@ type Group {
   type: GroupTypeEnum!
   minParticipants: Int!
   maxParticipants: Int
+  participantsCount: Int
   discount: Int!
   expiresAt: Date!
 }
