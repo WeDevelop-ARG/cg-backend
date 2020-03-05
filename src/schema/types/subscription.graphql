@@ -1,7 +1,5 @@
 type Subscription {
   id: ID!
-  userId: ID!
-  groupId: ID!
 }
 
 input GroupSubscriptionInput {
