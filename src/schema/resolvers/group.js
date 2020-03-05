@@ -6,6 +6,9 @@ const resolvers = {
   },
   Query: {
     groups: groupController.getGroups
+  },
+  Mutation: {
+    createGroup: groupController.createGroup
   }
 }
 
