@@ -6,7 +6,8 @@ const resolvers = {
     participantsCount: groupController.getParticipantsCount
   },
   Query: {
-    groups: groupController.getGroups
+    groups: groupController.getGroups,
+    group: groupController.getGroupById
   },
   Mutation: {
     createGroup: groupController.createGroup

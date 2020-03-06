@@ -26,6 +26,7 @@ input GroupInput {
 
 extend type Query {
   groups: [Group!]!
+  group(id: ID!): Group
 }
 
 # Mutations
