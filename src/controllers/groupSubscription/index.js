@@ -1,5 +1,12 @@
-import { groupSubscription } from '~/src/models'
+import mercadoPagoCheckout from './checkout'
+import subscribeToGroup from './subscribe'
 
-export const subscribe = (obj, { input }) => groupSubscription.create({
-  userId: input.userId, groupId: input.groupId
-})
+export const subscribe = async (obj, { input }) => {
+  const { paymentMethod, ...subscriptionData } = input
+
+  const paymentId = mercadoPagoCheckout(paymentMethod)
+
+  const subscription = await subscribeToGroup({ ...subscriptionData, paymentId })
+
+  return subscription
+}
