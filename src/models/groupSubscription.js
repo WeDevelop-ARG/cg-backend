@@ -9,6 +9,7 @@ export default (sequelize, DataTypes) => {
 
   GroupSubscription.beforeCreate(async (input) => {
     await checkGroupIsNotFull(input)
+    await checkUserGroupUnique(input)
   })
 
   // Associations
@@ -25,6 +26,12 @@ export default (sequelize, DataTypes) => {
     if (groupInstance && participantCount >= groupInstance.maxParticipants) {
       throw new Error('No podés comprar si el grupo está lleno')
     }
+  }
+
+  async function checkUserGroupUnique ({ userId, groupId }) {
+    const userIsAlreadySubscribed = await GroupSubscription.count({ where: { groupId, userId } })
+
+    if (userIsAlreadySubscribed) throw new Error('Ya está subscrito al grupo')
   }
 
   return GroupSubscription
