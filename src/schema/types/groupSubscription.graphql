@@ -5,6 +5,7 @@ type GroupSubscription {
 input GroupSubscriptionInput {
   userId: ID!
   groupId: ID!
+  paymentMethod: MercadoPagoInput!
 }
 
 extend type Mutation {
