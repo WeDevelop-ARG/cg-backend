@@ -6,6 +6,17 @@ export const getGroupById = async (obj, { id }, { models }) => models.group.find
 
 export const getProduct = (obj) => obj.getProduct()
 
+export const isCurrentUserSubscribed = async (obj, args, context) => {
+  if (!context.currentUser) return false
+
+  const groupSubscription = await context.models.groupSubscription.count({
+    groupId: obj.id,
+    userId: context.currentUser.id
+  })
+
+  return !!groupSubscription
+}
+
 export const getParticipantsCount = (obj, args, context) => {
   return context.models.groupSubscription.count({
     where: {

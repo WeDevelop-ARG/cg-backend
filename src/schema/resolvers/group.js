@@ -3,7 +3,8 @@ import * as groupController from '~/src/controllers/group'
 const resolvers = {
   Group: {
     product: groupController.getProduct,
-    participantsCount: groupController.getParticipantsCount
+    participantsCount: groupController.getParticipantsCount,
+    isSubscribed: groupController.isCurrentUserSubscribed
   },
   Query: {
     groups: groupController.getGroups,

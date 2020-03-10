@@ -17,9 +17,10 @@ const server = new ApolloServer({
   instrospection: true,
   playground: true,
   tracing: true,
-  context: () => ({
+  context: async () => ({
     models,
-    sequelize: new Sequelize(require('~/src/config/sequelize')())
+    sequelize: new Sequelize(require('~/src/config/sequelize')()),
+    currentUser: await models.user.findByPk('9c3859b0-5efe-11ea-bc55-0242ac130003')
   })
 })
 
