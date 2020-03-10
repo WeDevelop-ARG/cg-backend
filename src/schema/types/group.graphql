@@ -7,6 +7,7 @@ type Group {
   participantsCount: Int
   discount: Int!
   expiresAt: Date!
+  isSubscribed: Boolean
 }
 
 enum GroupTypeEnum {

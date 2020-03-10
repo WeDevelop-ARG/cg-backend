@@ -1,26 +1,21 @@
-import { group, groupSubscription } from '~/src/models'
+import { group } from '~/src/models'
 
-export const getGroups = async (obj, args, { currentUser = {} }) => {
-  const { id: userId } = await currentUser
-  let groups = await group.findAll()
-
-  if (userId) {
-    const userSubscriptions = (await groupSubscription.findAll({ where: { userId } }))
-      .map((subscription) => subscription.groupId)
-
-    groups = groups.map((group) => {
-      if (userSubscriptions.includes(group.id)) return { ...group.toJSON(), isSubscribed: true }
-
-      return group
-    })
-  }
-
-  return groups
-}
+export const getGroups = () => group.findAll()
 
 export const getGroupById = async (obj, { id }, { models }) => models.group.findByPk(id)
 
 export const getProduct = (obj) => obj.getProduct()
+
+export const isCurrentUserSubscribed = async (obj, args, context) => {
+  if (!context.currentUser) return false
+
+  const groupSubscription = await context.models.groupSubscription.count({
+    groupId: obj.id,
+    userId: context.currentUser.id
+  })
+
+  return !!groupSubscription
+}
 
 export const getParticipantsCount = (obj, args, context) => {
   return context.models.groupSubscription.count({
