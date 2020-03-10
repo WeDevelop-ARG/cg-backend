@@ -29,6 +29,14 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: false
     }
+  }, {
+    validate: {
+      participantsAmount () {
+        if (this.maxParticipants && this.maxParticipants < this.minParticipants) {
+          throw new Error('El máximo de participantes debe ser superior o igual al mínimo')
+        }
+      }
+    }
   })
 
   // Associations
