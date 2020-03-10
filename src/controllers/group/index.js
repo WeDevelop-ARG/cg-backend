@@ -10,8 +10,10 @@ export const isCurrentUserSubscribed = async (obj, args, context) => {
   if (!context.currentUser) return false
 
   const groupSubscription = await context.models.groupSubscription.count({
-    groupId: obj.id,
-    userId: context.currentUser.id
+    where: {
+      groupId: obj.id,
+      userId: context.currentUser.id
+    }
   })
 
   return !!groupSubscription
