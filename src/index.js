@@ -19,7 +19,8 @@ const server = new ApolloServer({
   tracing: true,
   context: () => ({
     models,
-    sequelize: new Sequelize(require('~/src/config/sequelize')())
+    sequelize: new Sequelize(require('~/src/config/sequelize')()),
+    currentUser: models.user.findByPk('9c3859b0-5efe-11ea-bc55-0242ac130003')
   })
 })
 
