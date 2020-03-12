@@ -11,5 +11,10 @@ export default (sequelize, DataTypes) => {
     }
   })
 
+  // Associations
+  User.associate = (models) => {
+    User.belongsToMany(models.group, { through: models.groupSubscription })
+  }
+
   return User
 }

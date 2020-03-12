@@ -20,7 +20,7 @@ const server = new ApolloServer({
   context: async () => ({
     models,
     sequelize: new Sequelize(require('~/src/config/sequelize')()),
-    currentUser: await models.user.findByPk('9c3859b0-5efe-11ea-bc55-0242ac130003')
+    currentUser: await models.user.findByPk('9c3859b0-5efe-11ea-bc55-0242ac130003', { include: [{ model: models.group }] })
   })
 })
 

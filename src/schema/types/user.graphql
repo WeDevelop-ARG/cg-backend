@@ -1,9 +1,9 @@
 type User {
   id: ID!
   name: String!
-  groupsSubscribed: [Group]
+  groups: [Group]
 }
 
 extend type Query {
-  currentUser: User!
+  currentUser: User
 }
