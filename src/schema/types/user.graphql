@@ -1,7 +1,7 @@
 type User {
   id: ID!
   name: String!
-  groups: [Group]
+  purchaseGroups: [Group]
 }
 
 extend type Query {
