@@ -1,9 +1,22 @@
 type User {
   id: ID!
   name: String!
+  email: String!
   purchaseGroups: [Group]
+}
+
+input UserInput {
+  name: String!
+  email: String!
+  password: String!
 }
 
 extend type Query {
   currentUser: User
+}
+
+extend type Mutation {
+  login(input: UserInput!): User!
+  signup(input: UserInput!): User!
+  logout: Boolean!
 }
