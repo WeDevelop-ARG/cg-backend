@@ -2,8 +2,8 @@
 import { CognitoUserPool } from 'amazon-cognito-identity-js'
 
 const poolData = {
-  UserPoolId: 'us-east-1_OkSTj3mq4',
-  ClientId: '5dsigl69f487rhrifrsi21p0ph'
+  UserPoolId: process.env.USER_POOL_ID,
+  ClientId: process.env.CLIENT_ID
 }
 
 export default new CognitoUserPool(poolData)
