@@ -1,4 +1,9 @@
 type User {
   id: ID!
   name: String!
+  purchaseGroups: [Group]
+}
+
+extend type Query {
+  currentUser: User
 }
