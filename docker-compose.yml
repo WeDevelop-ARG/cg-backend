@@ -31,6 +31,8 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_HOST=cg-db
       - DB_PORT=${DB_PORT}
+      - USER_POOL_ID=${USER_POOL_ID}
+      - CLIENT_ID=${CLIENT_ID}
     command: ['npm', 'run', 'dev:with-migrations']
 
   cg-frontend:

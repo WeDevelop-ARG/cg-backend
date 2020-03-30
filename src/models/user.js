@@ -8,6 +8,11 @@ export default (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING,
       alloNull: false
+    },
+    email: {
+      type: DataTypes.STRING,
+      unique: true,
+      alloNull: false
     }
   })
 
