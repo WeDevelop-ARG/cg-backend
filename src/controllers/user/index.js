@@ -1,5 +1,7 @@
 import cognitoService from './cognito'
 
+export const getPurchaseGroups = (obj, args) => obj.getGroups()
+
 export const getCurrentUser = async (obj, args, context) => {
   const currentUserEmail = await cognitoService.getCurrentUser()
   return context.models.user.findOne({ where: { email: currentUserEmail } })

@@ -5,7 +5,7 @@ const resolvers = {
     purchaseGroups: userController.getPurchaseGroups
   },
   Query: {
-    currentUser: userController.currentUser
+    currentUser: userController.getCurrentUser
   },
   Mutation: {
     signup: userController.signup,
