@@ -36,6 +36,6 @@ module.exports = {
   },
 
   down: (queryInterface) => {
-    return queryInterface.dropTable('subscription')
+    return queryInterface.dropTable('groupSubscription')
   }
 }
