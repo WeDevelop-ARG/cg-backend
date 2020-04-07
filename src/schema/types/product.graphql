@@ -7,7 +7,19 @@ type Product {
   marketPrice: Float!
 }
 
+input ProductInput {
+  photoUrl: String!
+  name: String!
+  description: String
+  price: Float!
+  marketPrice: Float!
+}
+
 extend type Query {
   products: [Product!]!
   product(id: ID!) : Product
+}
+
+extend type Mutation {
+  createProduct(input: ProductInput!): Product!
 }
