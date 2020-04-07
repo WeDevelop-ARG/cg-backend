@@ -19,6 +19,7 @@ export default (sequelize, DataTypes) => {
   // Associations
   User.associate = (models) => {
     User.belongsToMany(models.group, { through: models.groupSubscription })
+    User.hasMany(models.group, { as: 'myGroups', foreignKey: 'sellerId' })
   }
 
   return User
