@@ -16,7 +16,6 @@ enum GroupTypeEnum {
 }
 
 input GroupInput {
-  id: ID!
   productId: ID!
   type: GroupTypeEnum!
   minParticipants: Int!
