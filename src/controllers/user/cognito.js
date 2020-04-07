@@ -28,21 +28,33 @@ const addUser = async (email, password) =>
 
 const getCurrentUserPool = () => UserPool.getCurrentUser()
 
-const getCurrentUser = () =>
-  new Promise((resolve, reject) => {
-    const user = getCurrentUserPool()
-    if (user) {
-      user.getSession((err, session) => {
-        if (err) {
-          reject(err)
-        } else {
-          resolve(session.idToken.payload.email)
-        }
-      })
-    } else {
-      reject()
-    }
+const getCurrentUserSession = (user) => {
+  if (!user) return null
+
+  return new Promise((resolve, reject) => {
+    user.getSession((err, session) => {
+      if (err) return reject(err)
+
+      return resolve(session)
+    })
   })
+}
+
+const getEmailFromSession = (session) => {
+  if (session) return null
+
+  const { idToken: { payload: { email } = {} } = {} } = session
+
+  return email
+}
+
+const getCurrentUser = async () => {
+  const user = await getCurrentUserPool()
+
+  const session = await getCurrentUserSession(user) || {}
+
+  return getEmailFromSession(session)
+}
 
 module.exports = {
   authenticate,
