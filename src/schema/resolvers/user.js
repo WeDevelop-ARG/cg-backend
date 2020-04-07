@@ -2,7 +2,8 @@ import * as userController from '~/src/controllers/user'
 
 const resolvers = {
   User: {
-    purchaseGroups: userController.getPurchaseGroups
+    subscribedGroups: userController.getSubscribedGroups,
+    publishedGroups: userController.getPublishedGroups
   },
   Query: {
     currentUser: userController.getCurrentUser

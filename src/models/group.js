@@ -42,6 +42,7 @@ export default (sequelize, DataTypes) => {
   // Associations
   Group.associate = (models) => {
     Group.belongsTo(models.product)
+    Group.belongsTo(models.user, { as: 'seller' })
   }
 
   return Group
