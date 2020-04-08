@@ -1,18 +1,16 @@
 import cognitoService from './cognito'
-
 export const getSubscribedGroups = (obj, args) => obj.getSubscribedGroups()
 
 export const getPublishedGroups = (obj, args) => obj.getPublishedGroups()
 
-export const getCurrentUser = async (obj, args, context) => {
-  const currentUserEmail = await cognitoService.getCurrentUser()
-
-  return context.models.user.findOne({ where: { email: currentUserEmail } })
-}
+export const getCurrentUser = async (obj, args, context) => context.currentUser
 
 export const login = async (obj, args, context) => {
-  await cognitoService.authenticate(args.input.email, args.input.password)
-  return context.models.user.findOne({ where: { email: args.input.email } })
+  const auth = await cognitoService.authenticate(args.input.email, args.input.password)
+
+  const user = await context.models.user.findOne({ where: { email: args.input.email }, raw: true })
+
+  return { ...user, token: auth.idToken.jwtToken }
 }
 
 export const signup = async (obj, args, context) => {

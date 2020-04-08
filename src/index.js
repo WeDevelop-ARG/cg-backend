@@ -3,6 +3,7 @@ import Sequelize from 'sequelize'
 import { ApolloServer } from 'apollo-server-express'
 import { createServer } from 'http'
 import * as models from '~/src/models'
+import jwtAuth from './middlewares/jwtAuth'
 
 import schema from './schema'
 
@@ -12,15 +13,17 @@ const port = process.env.PORT || 3001
 
 const app = express()
 
+app.use(jwtAuth)
+
 const server = new ApolloServer({
   ...schema,
   instrospection: true,
   playground: true,
   tracing: true,
-  context: async () => ({
+  context: async ({ req }) => ({
     models,
     sequelize: new Sequelize(require('~/src/config/sequelize')()),
-    currentUser: await models.user.findByPk('9c3859b0-5efe-11ea-bc55-0242ac130003')
+    currentUser: req.user
   })
 })
 
