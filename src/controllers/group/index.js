@@ -27,6 +27,8 @@ export const getParticipantsCount = (obj, args, context) => {
   })
 }
 
-export const createGroup = (obj, args, context) => {
-  return context.models.group.create(args.input)
+export const createGroup = async (obj, { input }, context) => {
+  const product = await context.models.product.create(input.product)
+  input.productId = product.id
+  return context.models.group.create(input)
 }
