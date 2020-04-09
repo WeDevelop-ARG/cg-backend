@@ -4,9 +4,15 @@ type User {
   email: String!
   subscribedGroups: [Group]!
   publishedGroups: [Group]!
+  token: String
 }
 
-input UserInput {
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+input SignupInput {
   name: String!
   email: String!
   password: String!
@@ -17,7 +23,7 @@ extend type Query {
 }
 
 extend type Mutation {
-  login(input: UserInput!): User!
-  signup(input: UserInput!): User!
+  login(input: LoginInput!): User!
+  signup(input: SignupInput!): User!
   logout: Boolean!
 }
