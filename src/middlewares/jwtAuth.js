@@ -17,7 +17,10 @@ export default async (req, res, next) => {
 
     const decodedJwt = jwt.decode(token, { complete: true })
 
-    if (!decodedJwt) throw new Error('Invalid token')
+    if (!decodedJwt) {
+      req.user = null
+      return next()
+    }
 
     req.user = await getUser(decodedJwt)
 

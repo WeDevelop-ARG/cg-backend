@@ -15,7 +15,12 @@ export const login = async (obj, args, context) => {
 
 export const signup = async (obj, args, context) => {
   await cognitoService.addUser(args.input.email, args.input.password)
-  return context.models.user.create(args.input)
+  const auth = await cognitoService.authenticate(args.input.email, args.input.password)
+
+  let user = await context.models.user.create(args.input)
+  user = user.toJSON()
+
+  return { ...user, token: auth.idToken.jwtToken }
 }
 
 export const logout = () => {
