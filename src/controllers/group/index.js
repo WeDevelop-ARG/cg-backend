@@ -30,7 +30,11 @@ export const getParticipantsCount = (obj, args, context) => {
 export const createGroup = async (obj, { input }, context) => {
   const productId = await createProductIfNotGiven(input, context.models)
 
-  return context.models.group.create({ ...input, productId })
+  return context.models.group.create({
+    ...input,
+    productId,
+    sellerId: context.currentUser.id
+  })
 }
 const createProductIfNotGiven = async (input, models) => {
   if (input.productId) return input.productId
