@@ -12,7 +12,7 @@ const resolvers = {
     group: groupController.getGroupById
   },
   Mutation: {
-    createGroup: (obj, params, context) => requireAuth(obj, params, context)(groupController.createGroup)
+    createGroup: requireAuth(groupController.createGroup)
   }
 }
 

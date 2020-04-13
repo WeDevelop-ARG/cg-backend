@@ -1,7 +1,7 @@
 import { AuthenticationError } from 'apollo-server-express'
 
-export default (obj, args, context) => {
+export default (controller) => (obj, args, context) => {
   if (!context.currentUser) throw new AuthenticationError('Must be authenticated')
 
-  return (controller) => controller(obj, args, context)
+  return controller(obj, args, context)
 }
