@@ -1,4 +1,5 @@
 import * as groupController from '~/src/controllers/group'
+import requireAuth from '~/src/middlewares/requireAuth'
 
 const resolvers = {
   Group: {
@@ -11,7 +12,7 @@ const resolvers = {
     group: groupController.getGroupById
   },
   Mutation: {
-    createGroup: groupController.createGroup
+    createGroup: (obj, params, context) => requireAuth(obj, params, context)(groupController.createGroup)
   }
 }
 
