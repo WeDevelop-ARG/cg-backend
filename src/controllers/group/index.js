@@ -33,11 +33,7 @@ export const createGroup = async (obj, { input }, context) => {
   return context.models.group.create({
     ...input,
     productId,
-<<<<<<< HEAD
     sellerId: context.currentUser.id
-=======
-    sellerId: context.currentUser && context.currentUser.id
->>>>>>> Add currentUser to group creation
   })
 }
 const createProductIfNotGiven = async (input, models) => {
