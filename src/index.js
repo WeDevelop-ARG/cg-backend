@@ -4,6 +4,7 @@ import { ApolloServer } from 'apollo-server-express'
 import { createServer } from 'http'
 import * as models from '~/src/models'
 import jwtAuth from './middlewares/jwtAuth'
+import bodyParser from 'body-parser'
 
 import schema from './schema'
 
@@ -14,6 +15,7 @@ const port = process.env.PORT || 3001
 const app = express()
 
 app.use(jwtAuth)
+app.use(bodyParser.json({ limit: '50mb' }))
 
 const server = new ApolloServer({
   ...schema,
