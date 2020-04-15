@@ -2,7 +2,7 @@ import * as productController from '~/src/controllers/product'
 
 const resolvers = {
   Product: {
-    productPhotos: productController.getPhotos
+    photos: productController.getPhotos
   },
   Query: {
     products: productController.getProducts,
