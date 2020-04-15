@@ -6,7 +6,7 @@ export default (sequelize, DataTypes) => {
       defaultValue: DataTypes.UUIDV4
     },
     photoUrl: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     name: {
@@ -26,6 +26,11 @@ export default (sequelize, DataTypes) => {
       allowNull: false
     }
   })
+
+  // Associations
+  Product.associate = (models) => {
+    Product.hasMany(models.productPhoto)
+  }
 
   return Product
 }

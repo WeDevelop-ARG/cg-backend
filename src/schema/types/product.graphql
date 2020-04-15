@@ -5,6 +5,7 @@ type Product {
   description: String
   price: Float!
   marketPrice: Float!
+  productPhotos: [ProductPhoto]!
 }
 
 input ProductInput {
@@ -13,6 +14,7 @@ input ProductInput {
   description: String
   price: Float!
   marketPrice: Float!
+  productPhotos: [String!]
 }
 
 extend type Query {
