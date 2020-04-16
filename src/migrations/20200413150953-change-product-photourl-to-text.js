@@ -6,6 +6,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.changeColumn('product', 'photoUrl', Sequelize.STRING)
+    return queryInterface.changeColumn('product', 'photoUrl', Sequelize.TEXT)
   }
 }
