@@ -14,7 +14,7 @@ input ProductInput {
   description: String
   price: Float!
   marketPrice: Float!
-  productPhotosUrls: [String!]
+  productPhotosUrls: [String!]!
 }
 
 extend type Query {
