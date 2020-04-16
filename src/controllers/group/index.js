@@ -27,18 +27,16 @@ export const getParticipantsCount = (obj, args, context) => {
   })
 }
 
-export const createGroup = async (obj, { input }, context) => {
-  // Add a transaction
-  return context.sequelize.transaction(async (transaction) => {
+export const createGroup = async (obj, { input }, context) => context.sequelize
+  .transaction(async (transaction) => {
     const productId = await createProductIfNotGiven(input, context.models, { transaction })
 
     return context.models.group.create({
       ...input,
       productId,
       sellerId: context.currentUser.id
-    })
+    }, { transaction })
   })
-}
 
 const createProductIfNotGiven = async (input, models, { transaction }) => {
   if (input.productId) return input.productId
