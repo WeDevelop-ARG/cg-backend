@@ -1,4 +1,4 @@
-import { group } from '~/src/models'
+import { group, productPhoto } from '~/src/models'
 
 export const getGroups = () => group.findAll()
 
@@ -27,17 +27,26 @@ export const getParticipantsCount = (obj, args, context) => {
   })
 }
 
-export const createGroup = async (obj, { input }, context) => {
-  const productId = await createProductIfNotGiven(input, context.models)
+export const createGroup = async (obj, { input }, context) => context.sequelize
+  .transaction(async (transaction) => {
+    const productId = await createProductIfNotGiven(input, context.models, { transaction })
 
-  return context.models.group.create({
-    ...input,
-    productId,
-    sellerId: context.currentUser.id
+    return context.models.group.create({
+      ...input,
+      productId,
+      sellerId: context.currentUser.id
+    }, { transaction })
   })
-}
-const createProductIfNotGiven = async (input, models) => {
+
+const createProductIfNotGiven = async (input, models, { transaction }) => {
   if (input.productId) return input.productId
 
-  return (await models.product.create(input.product)).id
+  const product = await models.product.create(input.product, { transaction })
+
+  await savePhotos(product.id, input.product.productPhotosUrls, { transaction })
+
+  return product.id
 }
+
+const savePhotos = (productId, photos, { transaction }) => productPhoto
+  .bulkCreate(photos.map((url) => ({ productId, url })), { transaction })
