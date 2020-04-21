@@ -50,3 +50,26 @@ const createProductIfNotGiven = async (input, models, { transaction }) => {
 
 const savePhotos = (productId, photos, { transaction }) => productPhoto
   .bulkCreate(photos.map((url) => ({ productId, url })), { transaction })
+
+export const deleteGroup = async (obj, { id }, context) => {
+  const group = await context.models.group.findByPk(id)
+
+  if (!group || await isNotDeleteable(group, context)) return 0
+
+  const productId = group.productId
+  await context.sequelize.transaction(async (t) => {
+    await group.destroy({}, { transaction: t })
+    await context.models.product.destroy({ where: { id: productId } }, { transaction: t })
+
+    return 1
+  })
+}
+
+const isNotDeleteable = async (group, context) => {
+  const isSellerCorrect = context.currentUser === group.sellerId
+  const isGroupExpired = group.expiresAt <= new Date()
+  const subsribersCount = await context.models.groupSubscription.count({ where: { groupId: group.id } })
+  const hasActualSuscribers = !isGroupExpired && (subsribersCount > 0)
+
+  return !isSellerCorrect || hasActualSuscribers
+}

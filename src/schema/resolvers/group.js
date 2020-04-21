@@ -12,7 +12,8 @@ const resolvers = {
     group: groupController.getGroupById
   },
   Mutation: {
-    createGroup: requireAuth(groupController.createGroup)
+    createGroup: requireAuth(groupController.createGroup),
+    deleteGroup: requireAuth(groupController.deleteGroup)
   }
 }
 
