@@ -53,23 +53,22 @@ const savePhotos = (productId, photos, { transaction }) => productPhoto
 
 export const deleteGroup = async (obj, { id }, context) => {
   const group = await context.models.group.findByPk(id)
-  let result = 0
 
-  if (!group || await isNotDeleteable(group, context)) return result
+  if (!group || await isNotDeleteable(group, context)) return 0
 
   const productId = group.productId
   await context.sequelize.transaction(async (t) => {
     await context.models.groupSubscription.destroy({ where: { groupId: id } }, { transaction: t })
     await group.destroy({}, { transaction: t })
+    await context.models.productPhoto.destroy({ where: { productId: productId } }, { transaction: t })
     await context.models.product.destroy({ where: { id: productId } }, { transaction: t })
-    result = 1
   })
 
-  return result
+  return 1
 }
 
 const isNotDeleteable = async (group, context) => {
-  const isSellerCorrect = context.currentUser === group.sellerId
+  const isSellerCorrect = context.currentUser.id === group.sellerId
   const isGroupExpired = group.expiresAt <= new Date()
   const subsribersCount = await context.models.groupSubscription.count({ where: { groupId: group.id } })
   const hasActualSuscribers = !isGroupExpired && (subsribersCount > 0)
