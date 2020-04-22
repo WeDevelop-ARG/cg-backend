@@ -3,11 +3,11 @@ type S3Payload {
   url: String!
 }
 
-input SignS3Input {
+input SignedFileUploadURLInput {
   filename: String!
   filetype: String!
 }
 
 extend type Mutation {
-  signS3(input: SignS3Input!): S3Payload!
+  createSignedFileUploadURL(input: SignedFileUploadURLInput!): S3Payload!
 }
