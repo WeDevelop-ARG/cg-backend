@@ -1,0 +1,8 @@
+type S3Payload {
+  signedRequest: String!
+  url: String!
+}
+
+extend type Mutation {
+  signS3(filename: String!, filetype: String!): S3Payload!
+}
