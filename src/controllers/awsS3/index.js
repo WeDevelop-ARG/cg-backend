@@ -1,6 +1,6 @@
 import AWS from 'aws-sdk'
 
-export const signS3 = async (obj, { filename, filetype }) => {
+export const signS3 = async (obj, { input: { filename, filetype } }) => {
   const s3 = new AWS.S3()
 
   s3.config.update({
