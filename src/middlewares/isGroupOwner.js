@@ -1,10 +1,12 @@
 import { AuthenticationError } from 'apollo-server-express'
 
-export default (controller) => async (obj, args, context) => {
-  if (!context.currentUser) throw new AuthenticationError('Must be authenticated')
-
+const isGroupOwner = async (obj, args, context) => {
   const group = await context.models.group.findByPk(args.id)
-  if (!group || group.sellerId !== context.currentUser.id) throw new AuthenticationError('Must be group seller')
+  const isSeller = group && group.sellerId === context.currentUser.id
 
-  return controller(obj, args, context)
+  if (!isSeller) {
+    throw new AuthenticationError('Must be group seller')
+  }
 }
+
+export default isGroupOwner

@@ -52,7 +52,6 @@ const savePhotos = (productId, photos, { transaction }) => productPhoto
   .bulkCreate(photos.map((url) => ({ productId, url })), { transaction })
 
 export const deleteGroup = async (obj, { id }, context) => {
-  console.log(obj)
   await context.sequelize.transaction(async (t) => {
     const group = await context.models.group.findByPk(id, { transaction: t })
 
