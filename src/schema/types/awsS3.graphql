@@ -1,4 +1,4 @@
-type S3Payload {
+type SignedFileUploadURL {
   signedRequest: String!
   url: String!
 }
@@ -9,5 +9,5 @@ input SignedFileUploadURLInput {
 }
 
 extend type Mutation {
-  createSignedFileUploadURL(input: SignedFileUploadURLInput!): S3Payload!
+  createSignedFileUploadURL(input: SignedFileUploadURLInput!): SignedFileUploadURL!
 }
