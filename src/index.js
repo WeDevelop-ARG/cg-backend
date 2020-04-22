@@ -15,7 +15,7 @@ const port = process.env.PORT || 3001
 const app = express()
 
 app.use(jwtAuth)
-app.use(bodyParser.json({ limit: '50mb' }))
+app.use(bodyParser.json({ limit: '5mb' }))
 
 const server = new ApolloServer({
   ...schema,

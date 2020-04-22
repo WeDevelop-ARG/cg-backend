@@ -33,4 +33,5 @@ extend type Query {
 # Mutations
 extend type Mutation {
   createGroup(input: GroupInput!): Group!
+  deleteGroup(id: ID): Int!
 }
