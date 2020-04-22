@@ -1,0 +1,13 @@
+type SignedFileUploadURL {
+  signedRequest: String!
+  url: String!
+}
+
+input SignedFileUploadURLInput {
+  filename: String!
+  filetype: String!
+}
+
+extend type Mutation {
+  createSignedFileUploadURL(input: SignedFileUploadURLInput!): SignedFileUploadURL!
+}
