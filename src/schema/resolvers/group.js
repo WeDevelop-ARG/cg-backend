@@ -1,5 +1,6 @@
 import * as groupController from '~/src/controllers/group'
 import requireAuth from '~/src/middlewares/requireAuth'
+import isGroupOwner from '~/src/middlewares/isGroupOwner'
 
 const resolvers = {
   Group: {
@@ -13,7 +14,7 @@ const resolvers = {
   },
   Mutation: {
     createGroup: requireAuth(groupController.createGroup),
-    deleteGroup: requireAuth(groupController.deleteGroup)
+    deleteGroup: isGroupOwner(groupController.deleteGroup)
   }
 }
 

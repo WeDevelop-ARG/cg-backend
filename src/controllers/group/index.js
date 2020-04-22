@@ -52,12 +52,14 @@ const savePhotos = (productId, photos, { transaction }) => productPhoto
   .bulkCreate(photos.map((url) => ({ productId, url })), { transaction })
 
 export const deleteGroup = async (obj, { id }, context) => {
-  const group = await context.models.group.findByPk(id)
-
-  if (!group || await isNotDeleteable(group, context)) return 0
-
-  const productId = group.productId
+  console.log(obj)
   await context.sequelize.transaction(async (t) => {
+    const group = await context.models.group.findByPk(id, { transaction: t })
+
+    if (await canGroupBeDeleted(group, context, t)) throw new Error('Group can\'t be deleted')
+
+    const productId = group.productId
+
     await context.models.groupSubscription.destroy({ where: { groupId: id } }, { transaction: t })
     await group.destroy({}, { transaction: t })
     await context.models.productPhoto.destroy({ where: { productId: productId } }, { transaction: t })
@@ -67,11 +69,10 @@ export const deleteGroup = async (obj, { id }, context) => {
   return 1
 }
 
-const isNotDeleteable = async (group, context) => {
-  const isSellerCorrect = context.currentUser.id === group.sellerId
+const canGroupBeDeleted = async (group, context, t) => {
   const isGroupExpired = group.expiresAt <= new Date()
-  const subsribersCount = await context.models.groupSubscription.count({ where: { groupId: group.id } })
+  const subsribersCount = await context.models.groupSubscription.count({ where: { groupId: group.id } }, { transaction: t })
   const hasActualSuscribers = !isGroupExpired && (subsribersCount > 0)
 
-  return !isSellerCorrect || hasActualSuscribers
+  return hasActualSuscribers
 }
