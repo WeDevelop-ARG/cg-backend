@@ -11,7 +11,7 @@ export const createSignedFileUploadURL = async (obj, { input: { filename, filety
 
   const s3Params = {
     Bucket: s3Bucket,
-    Key: filename,
+    Key: `images/${filename}`,
     Expires: 60,
     ContentType: filetype,
     ACL: 'public-read'
