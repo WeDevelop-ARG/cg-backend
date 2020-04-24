@@ -5,10 +5,6 @@ export default (sequelize, DataTypes) => {
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4
     },
-    photoUrl: {
-      type: DataTypes.TEXT,
-      allowNull: false
-    },
     name: {
       type: DataTypes.STRING,
       allowNull: false

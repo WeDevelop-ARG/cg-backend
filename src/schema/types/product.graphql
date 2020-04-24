@@ -1,6 +1,5 @@
 type Product {
   id: ID!
-  photoUrl: String!
   name: String!
   description: String
   price: Float!
@@ -9,7 +8,6 @@ type Product {
 }
 
 input ProductInput {
-  photoUrl: String!
   name: String!
   description: String
   price: Float!
