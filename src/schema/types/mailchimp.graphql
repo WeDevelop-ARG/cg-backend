@@ -1,12 +1,6 @@
-enum MailchimpMemberStatus {
-  SUBSCRIBED
-  PENDING
-}
-
 type MailchimpMember {
   id: ID!
   email: String!
-  status: MailchimpMemberStatus!
 }
 
 input MailchimpMemberInput {
