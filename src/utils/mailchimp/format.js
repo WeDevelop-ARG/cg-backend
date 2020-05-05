@@ -1,7 +1,6 @@
 export default {
-  response: ({ email_address = '', id = '', status = '' }) => ({
+  response: ({ email_address = '', id = '' }) => ({
     id,
-    email: email_address,
-    status: status.toUpperCase()
+    email: email_address
   })
 }
