@@ -1,0 +1,12 @@
+type MailchimpMember {
+  id: ID!
+  email: String!
+}
+
+input MailchimpMemberInput {
+  email: String!
+}
+
+extend type Mutation {
+  subscribeToNewsletters(input: MailchimpMemberInput) : MailchimpMember!
+}
