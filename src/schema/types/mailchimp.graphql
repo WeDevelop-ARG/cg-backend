@@ -9,6 +9,10 @@ type MailchimpMember {
   status: MailchimpMemberStatus!
 }
 
-extend type Query {
-  mailchimpMembers: [MailchimpMember]!
+input MailchimpMemberInput {
+  email: String!
+}
+
+extend type Mutation {
+  subscribeToNewsletters(input: MailchimpMemberInput) : MailchimpMember!
 }
