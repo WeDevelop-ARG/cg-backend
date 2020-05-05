@@ -4,7 +4,7 @@ const MC_DC = process.env.MC_DC
 const MC_AUDIENCE_ID = process.env.MC_AUDIENCE_ID
 const MC_API_KEY = process.env.MC_API_KEY
 
-const baseURL = `https://${MC_DC}.api.mailchimp.com/3.0/`
+const baseURL = `https://${MC_DC}.api.mailchimp.com/3.0`
 
 const Http = axios.create({ baseURL })
 

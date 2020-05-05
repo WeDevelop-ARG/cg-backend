@@ -1,0 +1,14 @@
+enum MailchimpMemberStatus {
+  SUBSCRIBED
+  PENDING
+}
+
+type MailchimpMember {
+  id: ID!
+  email: String!
+  status: MailchimpMemberStatus!
+}
+
+extend type Query {
+  mailchimpMembers: [MailchimpMember]!
+}
