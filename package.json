@@ -4,7 +4,7 @@
   "description": "Backend for cg",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "nodemon -w src --config --ext js,graphql --exec \"babel-node src\"",
     "dev:with-migrations": "npx sequelize db:migrate && npm run dev",
     "build": "npm run cleanup && babel src -D -d dist",
@@ -39,7 +39,10 @@
     "@babel/core": "^7.2.2",
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
+    "@types/jest": "^25.2.1",
+    "babel-jest": "^26.0.1",
     "babel-plugin-root-import": "^6.1.0",
+    "jest": "^26.0.1",
     "nodemon": "^1.18.9",
     "standard": "^14.3.1"
   }
