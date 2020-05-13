@@ -28,7 +28,7 @@ describe('subscribe resolves', () => {
   })
 
   test('should return fakeResult', () => {
-    expect(result).resolves.toBe(fakeResult)
+    return expect(result).resolves.toBe(fakeResult)
   })
   test('mercadoPagoCheckout should be called with', () => {
     expect(mercadoPagoCheckout).toBeCalledWith(paymentMethod)
@@ -36,14 +36,8 @@ describe('subscribe resolves', () => {
   test('subscribeToGroup should be called with', () => {
     expect(subscribeToGroup).toBeCalledWith({ ...subscriptionData, userId: fakeUserId, paymentId: fakeMercadopagoResult })
   })
-})
-
-test('subscribe rejects', () => {
-  mercadoPagoCheckout.mockReturnValueOnce(fakeMercadopagoResult)
-  subscribeToGroup.mockImplementation(() => { throw new Error('creation failed') })
-
-  expect(subscribe(null, fakeInput, fakeCurrentUser)).rejects.toEqual(Error('creation failed'))
-
-  mercadoPagoCheckout.mockReset()
-  subscribeToGroup.mockReset()
+  test('subscribe rejects', () => {
+    subscribeToGroup.mockImplementation(() => { throw new Error('creation failed') })
+    return expect(subscribe(null, fakeInput, fakeCurrentUser)).rejects.toEqual(Error('creation failed'))
+  })
 })
