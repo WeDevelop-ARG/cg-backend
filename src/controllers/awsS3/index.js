@@ -1,27 +1,6 @@
-import AWS from 'aws-sdk'
-const s3 = new AWS.S3()
+import signFile from './signFile'
+import S3 from './S3'
+import { s3Bucket } from './config'
 
-s3.config.update({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_ACCESS_KEY
-})
-
-export const createSignedFileUploadURL = async (obj, { input: { filename, filetype } }) => {
-  const s3Bucket = process.env.AWS_BUCKET
-
-  const s3Params = {
-    Bucket: s3Bucket,
-    Key: `images/${filename}`,
-    Expires: 60,
-    ContentType: filetype,
-    ACL: 'public-read'
-  }
-
-  const signedRequest = await s3.getSignedUrl('putObject', s3Params)
-  const url = `https://${s3Bucket}.s3.amazonaws.com/images/${filename}`
-
-  return {
-    signedRequest,
-    url
-  }
-}
+export const createSignedFileUploadURL = async (_, { input: { filename, filetype } }) =>
+  signFile({ filename, filetype }, { S3, s3Bucket })
