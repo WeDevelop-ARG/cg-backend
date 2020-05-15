@@ -1,11 +1,5 @@
 import jwt from 'jsonwebtoken'
-import { user as User } from '~/src/models'
-
-const getUser = (decodedJwt) => {
-  if (!decodedJwt || (decodedJwt && !decodedJwt.payload.email)) return null
-
-  return User.findOne({ where: { email: decodedJwt.payload.email } })
-}
+import getUser from './getDecodedUser'
 
 export default async (req, res, next) => {
   try {
@@ -14,7 +8,6 @@ export default async (req, res, next) => {
     if (!token) {
       return next()
     }
-
     const decodedJwt = jwt.decode(token, { complete: true })
 
     if (!decodedJwt) {
