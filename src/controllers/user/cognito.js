@@ -12,8 +12,8 @@ const authenticate = async (email, password) =>
         resolve(data)
       },
 
-      onFailure: err => {
-        reject(err)
+      onFailure: () => {
+        return reject(new Error('Invalid credentials'))
       }
     })
   })
