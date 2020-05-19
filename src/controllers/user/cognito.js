@@ -5,7 +5,7 @@ global.fetch = require('node-fetch')
 const authenticate = async (email, password) =>
   new Promise((resolve, reject) => {
     const user = new CognitoUser({ Username: email, Pool: UserPool })
-    const authDetails = new AuthenticationDetails({ Usernmae: email, Password: password })
+    const authDetails = new AuthenticationDetails({ Username: email, Password: password })
 
     user.authenticateUser(authDetails, {
       onSuccess: data => {
@@ -41,7 +41,7 @@ const getCurrentUserSession = (user) => {
 }
 
 const getEmailFromSession = (session) => {
-  if (session) return null
+  if (!session) return null
 
   const { idToken: { payload: { email } = {} } = {} } = session
 
