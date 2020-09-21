@@ -3,3 +3,4 @@ dist
 .env
 docker-compose.overwrite.yml
 .vscode
+.package.json.last_installed
