@@ -60,7 +60,7 @@ export const deleteGroup = async (obj, { id }, context) => {
     const productId = group.productId
 
     await context.models.groupSubscription.destroy({ where: { groupId: id } }, { transaction: t })
-    await group.destroy({}, { transaction: t })
+    await context.models.group.destroy({ where: { id: id } }, { transaction: t })
     await context.models.productPhoto.destroy({ where: { productId: productId } }, { transaction: t })
     await context.models.product.destroy({ where: { id: productId } }, { transaction: t })
   })

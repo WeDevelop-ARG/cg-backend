@@ -3,7 +3,6 @@
 const products = [
   {
     id: '0d55c1b9-0f35-4f2f-9ef8-ae1beb84aa2d',
-    photoUrl: 'https://m.media-amazon.com/images/I/71cgKlZ85UL._AC_UY218_ML3_.jpg',
     name: 'Tablet para niños',
     price: 25.99,
     marketPrice: 64.99,
@@ -11,7 +10,6 @@ const products = [
   },
   {
     id: '41b39187-d14c-48da-a379-62334561a9fa',
-    photoUrl: 'https://m.media-amazon.com/images/I/41FBnbqW3pL._AC_UY218_ML3_.jpg',
     name: 'Celular Xiaomi note 7',
     description: 'Xiaomi Redmi Note 7, 64 GB/4 GB de RAM, 6.30 pulgadas FHD+, Snapdragon 660, azul – versión global desbloqueada',
     price: 75.60,
@@ -20,7 +18,6 @@ const products = [
   },
   {
     id: 'b8457bb6-6415-4e26-8cac-ee9d882eb9e8',
-    photoUrl: 'https://images-na.ssl-images-amazon.com/images/I/7161kRzHgVL._UX575_.jpg',
     name: 'Zapatilla Nike Air Pegasus (running)',
     description: 'Nike Men\'s Air Zoom Pegasus 35 Running Shoe',
     price: 77.04,
@@ -29,7 +26,6 @@ const products = [
   },
   {
     id: 'a3c5e764-39bd-4d46-b4e0-79e6e917d62d',
-    photoUrl: 'https://images-na.ssl-images-amazon.com/images/I/519tNVVaAHL._SX425_.jpg',
     name: 'Auriculares Android Compatibles Xiaomi Airdots (2138 Meli)',
     description: 'Absolutely Marvelous Wireless Bluetooth Earbuds Airdots IPX4 Water Resistant Charge Case Compatible with iPhone iOS and Android Devices Phone Call and Voice Assistant Connection Capability (Black)',
     price: 21,
@@ -38,7 +34,6 @@ const products = [
   },
   {
     id: '707ff612-b677-4615-9f61-05fcca566dbd',
-    photoUrl: 'https://images-na.ssl-images-amazon.com/images/I/31kymfBM1BL.jpg',
     name: 'Termo Stanley',
     description: 'Termos inoxidable Rey de 16 onzas, vaso viajero, negro mate, Azul Midnight',
     price: 19.99,
@@ -47,7 +42,6 @@ const products = [
   },
   {
     id: '3c69b2e0-d379-4dae-93c8-60c4e311c19b',
-    photoUrl: 'https://images-na.ssl-images-amazon.com/images/I/811yQu5%2BBDL._SX522_.jpg',
     name: 'Botella termica',
     description: 'Super Sparrow - Botella de agua aislada al vacío de acero inoxidable, boca estándar de 11.8 fl oz, 21.0 fl oz, 16.9 fl oz, 25.4 fl oz y 1 L, sin BPA, con 2 tapas intercambiables + bolsa para botella',
     price: 15,
@@ -56,7 +50,6 @@ const products = [
   },
   {
     id: 'c332abc1-8b12-4fe2-8d61-d25589a317b1',
-    photoUrl: 'https://images-na.ssl-images-amazon.com/images/I/811yQu5%2BBDL._SX522_.jpg',
     name: 'Botella termica',
     description: 'Super Sparrow - Botella de agua aislada al vacío de acero inoxidable, boca estándar de 11.8 fl oz, 21.0 fl oz, 16.9 fl oz, 25.4 fl oz y 1 L, sin BPA, con 2 tapas intercambiables + bolsa para botella',
     price: 15,
@@ -65,7 +58,6 @@ const products = [
   },
   {
     id: 'e8ff5942-0580-49e8-975d-aaa10a512c7a',
-    photoUrl: 'https://www.revistaneo.com/sites/default/files/2019-10/stella.jpg',
     name: 'Cerveza Stella Artois',
     price: 30.99,
     marketPrice: 36.00,
@@ -73,7 +65,6 @@ const products = [
   },
   {
     id: '2e0f7128-4a6e-47b7-91e0-03c24b4c40c4',
-    photoUrl: 'https://www.encopadebalon.com/3861-thickbox_default/fernet-branca.jpg',
     name: 'Fernet',
     description: 'Fernet Branca',
     price: 10.99,
@@ -82,7 +73,6 @@ const products = [
   },
   {
     id: '3324019c-596f-4ed5-9533-84e8b6207b74',
-    photoUrl: 'https://images-na.ssl-images-amazon.com/images/I/61OEonE6HlL._AC_SY355_.jpg',
     name: 'Holders para llevar el telefono en el auto',
     description: 'Soporte Movil Coche, POOPHUNS Soporte Coche',
     price: 8.99,
@@ -91,7 +81,6 @@ const products = [
   },
   {
     id: 'ccb7e454-898d-4f6c-8226-84d50bcd9299',
-    photoUrl: 'https://images-na.ssl-images-amazon.com/images/I/717JYVB71OL._AC_SX679_.jpg',
     name: 'Correa para pasear perro',
     description: 'vitazoo Correa de Perro en Negro Grafito, Resistente y AjustableSoporte Movil Coche, POOPHUNS Soporte Coche',
     price: 12.00,
