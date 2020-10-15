@@ -1,3 +1,5 @@
+const AFIP_CONDITION_VALUES = ['ENROLLED_RESPONSIBLE', 'FINAL_CONSUMER']
+
 export default (sequelize, DataTypes) => {
   const User = sequelize.define('user', {
     id: {
@@ -7,12 +9,44 @@ export default (sequelize, DataTypes) => {
     },
     name: {
       type: DataTypes.STRING,
-      alloNull: false
+      allowNull: false
     },
     email: {
       type: DataTypes.STRING,
       unique: true,
-      alloNull: false
+      allowNull: false
+    },
+    street: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    streetNumber: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    city: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    state: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    flat: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    businessVertical: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    CUIT: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      allowNull: true
+    },
+    AFIPCondition: {
+      type: DataTypes.ENUM(...AFIP_CONDITION_VALUES),
+      allowNull: true
     }
   })
 

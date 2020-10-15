@@ -16,6 +16,14 @@ input SignupInput {
   name: String!
   email: String!
   password: String!
+  street: String
+  streetNumber: String
+  city: String
+  state: String
+  flat: String
+  CUIT: Int
+  businessVertical: String
+  AFIPCondition: String
 }
 
 extend type Query {
