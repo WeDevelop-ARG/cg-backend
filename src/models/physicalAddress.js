@@ -24,14 +24,6 @@ export default (sequelize, DataTypes) => {
     apartment: {
       type: DataTypes.STRING,
       allowNull: true
-    },
-    createdAt: {
-      allowNull: false,
-      type: DataTypes.DATE
-    },
-    updatedAt: {
-      allowNull: true,
-      type: DataTypes.DATE
     }
   })
 
