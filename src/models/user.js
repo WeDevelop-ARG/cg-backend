@@ -20,7 +20,7 @@ export default (sequelize, DataTypes) => {
   User.associate = (models) => {
     User.belongsToMany(models.group, { as: 'subscribedGroups', through: models.groupSubscription })
     User.hasMany(models.group, { as: 'publishedGroups', foreignKey: 'sellerId' })
-    User.belongTo(models.person)
+    User.belongsTo(models.person)
   }
 
   return User

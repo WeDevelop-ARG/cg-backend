@@ -27,5 +27,12 @@ export default (sequelize, DataTypes) => {
     }
   })
 
+  PhysicalAddress.associate = (models) => {
+    PhysicalAddress.belongsToMany(models.person, {
+      as: 'persons',
+      through: 'personPhysicalAddress'
+    })
+  }
+
   return PhysicalAddress
 }

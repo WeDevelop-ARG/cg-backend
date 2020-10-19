@@ -24,6 +24,7 @@ export default (sequelize, DataTypes) => {
       as: 'physicalAddresses',
       through: 'personPhysicalAddress'
     })
+    Person.belongsTo(models.user)
   }
 
   return Person
