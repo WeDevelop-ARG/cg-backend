@@ -22,16 +22,13 @@ export default (sequelize, DataTypes) => {
     AFIPCondition: {
       type: DataTypes.ENUM(...AFIP_CONDITION_VALUES),
       allowNull: false
-    },
-    physicalAddressId: {
-      type: DataTypes.UUID,
-      allowNull: false,
-      references: {
-        model: 'physicalAddress',
-        key: 'id'
-      }
     }
   })
+
+  LegalInformation.associate = (models) => {
+    LegalInformation.hasOne(models.business)
+    LegalInformation.belongsTo(models.physicalAddress)
+  }
 
   return LegalInformation
 }
