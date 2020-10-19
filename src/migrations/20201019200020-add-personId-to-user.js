@@ -2,7 +2,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.addColumn('user', 'personId', {
       type: Sequelize.UUID,
-      allowNull: true,
+      allowNull: false,
       references: {
         model: 'person',
         key: 'id'
