@@ -16,7 +16,8 @@ export default (sequelize, DataTypes) => {
       allowNull: false
     },
     CUIT: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
+      unique: true,
       allowNull: false
     },
     AFIPCondition: {
