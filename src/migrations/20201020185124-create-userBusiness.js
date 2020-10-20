@@ -1,21 +1,23 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('businessPhysicalAddress', {
-      businessId: {
+    return queryInterface.createTable('userBusiness', {
+      userId: {
         type: Sequelize.UUID,
+        allowNull: false,
         primaryKey: true,
         references: {
-          model: 'business',
+          model: 'user',
           key: 'id'
         },
         onUpdate: 'cascade',
         onDelete: 'cascade'
       },
-      physicalAddressId: {
+      businessId: {
         type: Sequelize.UUID,
+        allowNull: false,
         primaryKey: true,
         references: {
-          model: 'physicalAddress',
+          model: 'business',
           key: 'id'
         },
         onUpdate: 'cascade',
@@ -33,6 +35,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('businessPhysicalAddress')
+    return queryInterface.dropTable('userBusiness')
   }
 }

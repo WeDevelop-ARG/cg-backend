@@ -26,11 +26,11 @@ test('getUser wrong email should return null', () => {
   expect(getUser(fakeDecodedJWTWrongEmail)).toBe(null)
 })
 describe('getUser ok', () => {
-  let result  
+  let result
   beforeEach(() => {
     result = getUser(fakeDecodedJWT)
   })
-  
+
   test('getUser shold return ok', () => {
     expect(result).toBe(fakeUser)
   })
