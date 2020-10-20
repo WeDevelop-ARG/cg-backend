@@ -232,7 +232,7 @@ describe('deleteGroup', () => {
     groupFindByPk.mockReturnValue(fakeGroup)
   })
 
-  describe('should delete group', () => {    
+  describe('should delete group', () => {
     beforeAll(() => {
       groupSubCount.mockReturnValueOnce(0)
       result = groupController.deleteGroup(null, fakeInput, fakeContext)

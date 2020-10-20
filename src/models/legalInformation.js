@@ -26,7 +26,7 @@ export default (sequelize, DataTypes) => {
   })
 
   LegalInformation.associate = (models) => {
-    LegalInformation.hasOne(models.business)
+    LegalInformation.hasMany(models.business)
     LegalInformation.belongsTo(models.physicalAddress)
   }
 

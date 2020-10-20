@@ -21,7 +21,11 @@ export default (sequelize, DataTypes) => {
     User.belongsToMany(models.group, { as: 'subscribedGroups', through: models.groupSubscription })
     User.hasMany(models.group, { as: 'publishedGroups', foreignKey: 'sellerId' })
     User.hasOne(models.person)
-    User.belongsTo(models.business)
+    User.belongsToMany(models.business, {
+      through: 'userBusiness',
+      foreignKey: 'userId',
+      as: 'businesses'
+    })
   }
 
   return User
