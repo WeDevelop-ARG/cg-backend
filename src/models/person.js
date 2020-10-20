@@ -20,11 +20,7 @@ export default (sequelize, DataTypes) => {
   })
 
   Person.associate = (models) => {
-    Person.belongsToMany(models.physicalAddress, {
-      as: 'physicalAddresses',
-      foreignKey: 'personId',
-      through: 'personPhysicalAddress'
-    })
+    Person.belongsTo(models.physicalAddress)
     Person.hasOne(models.user)
   }
 

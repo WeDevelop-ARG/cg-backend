@@ -18,6 +18,14 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
+      physicalAddressId: {
+        type: Sequelize.UUID,
+        allowNull: false,
+        references: {
+          model: 'physicalAddress',
+          key: 'id'
+        }
+      },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false
