@@ -15,7 +15,8 @@ module.exports = {
         allowNull: false
       },
       CUIT: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
+        unique: true,
         allowNull: false
       },
       AFIPCondition: {
