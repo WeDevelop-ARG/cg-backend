@@ -13,7 +13,10 @@ export default (sequelize, DataTypes) => {
 
   Business.associate = (models) => {
     Business.belongsTo(models.legalInformation)
-    Business.belongsTo(models.physicalAddress, { as: 'realAddress' })
+    Business.belongsTo(models.physicalAddress, {
+      foreignKey: 'physicalAddressId',
+      as: 'realAddress'
+    })
     Business.belongsToMany(models.user, {
       through: 'userBusiness',
       foreignKey: 'businessId',

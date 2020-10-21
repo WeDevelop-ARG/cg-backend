@@ -38,7 +38,7 @@ module.exports = {
       }, { transaction })
 
       await queryInterface.addIndex('business', [queryInterface.sequelize.fn('lower', queryInterface.sequelize.col('fantasyName'))], {
-        name: 'business_fantasyName_unique_case_insensitive',
+        name: 'business_fantasyName_idx',
         unique: true,
         transaction
       })
@@ -47,8 +47,8 @@ module.exports = {
 
   down: (queryInterface, Sequelize) => {
     return queryInterface.sequelize.transaction(async (transaction) => {
+      await queryInterface.removeIndex('business', 'business_fantasyName_idx', { transaction })
       await queryInterface.dropTable('business', { transaction })
-      await queryInterface.removeIndex('business', 'business_fantasyName_unique_case_insensitive', { transaction })
     })
   }
 }
