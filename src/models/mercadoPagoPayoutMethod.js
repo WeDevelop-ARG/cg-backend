@@ -17,14 +17,12 @@ export default (sequelize, DataTypes) => {
     }
   })
 
+  MercadoPagoPayoutMethod.prototype.payout = function (options) {
+    console.log('Mercado pago payout placeholder')
+  }
+
   MercadoPagoPayoutMethod.associate = (models) => {
-    MercadoPagoPayoutMethod.belongsTo(models.payoutMethod, {
-      foreignKey: 'payoutMethodId',
-      constraints: false,
-      scope: {
-        type: 'MercadoPagoPayoutMethod'
-      }
-    })
+    MercadoPagoPayoutMethod.belongsTo(models.payoutMethod)
   }
 
   return MercadoPagoPayoutMethod

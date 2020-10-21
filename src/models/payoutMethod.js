@@ -23,12 +23,12 @@ export default (sequelize, DataTypes) => {
     }
   })
 
-  PayoutMethod.prototype.getMethod = function(options) {
+  PayoutMethod.prototype.getMethod = function (options) {
     if (isEmpty(this.type)) return Promise.resolve(null)
 
     const mixinMethodName = `get${upperFirst(this.type)}`
 
-    return this[mixinMethodName](options) //getMercadoPago....
+    return this[mixinMethodName](options)
   }
 
   PayoutMethod.associate = (models) => {

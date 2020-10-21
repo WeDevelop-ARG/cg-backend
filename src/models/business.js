@@ -22,6 +22,10 @@ export default (sequelize, DataTypes) => {
       foreignKey: 'businessId',
       as: 'users'
     })
+    Business.belongsTo(models.payoutMethod, {
+      foreignKey: 'defaultPayoutMethodId',
+      as: 'defaultPayoutMethod'
+    })
   }
 
   return Business
