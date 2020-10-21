@@ -16,12 +16,16 @@ export default (sequelize, DataTypes) => {
     dni: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    userId: {
+      type: DataTypes.UUID,
+      allowNull: false
     }
   })
 
   Person.associate = (models) => {
     Person.belongsTo(models.physicalAddress)
-    Person.hasOne(models.user)
+    Person.belongsTo(models.user)
   }
 
   return Person
