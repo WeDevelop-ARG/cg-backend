@@ -18,7 +18,7 @@ export default (sequelize, DataTypes) => {
   })
 
   MercadoPagoPayoutMethod.prototype.payout = function (options) {
-    console.log('Mercado pago payout placeholder')
+    // TODO: Implement the correct logic with the MercadoPago details
   }
 
   MercadoPagoPayoutMethod.associate = (models) => {
