@@ -8,6 +8,10 @@ export default (sequelize, DataTypes) => {
     fantasyName: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    vertical: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   })
 
