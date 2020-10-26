@@ -1,0 +1,31 @@
+type Business {
+  id: ID!
+  fantasyName: String!
+  realName: String!
+  vertical: String!
+  CUIT: String!
+  AFIPCondition: AFIPConditionEnum!
+  address: Address!
+}
+
+enum AFIPConditionEnum {
+  ENROLLED_RESPONSIBLE
+  FINAL_CONSUMER
+}
+
+input CreateBusinessInput {
+  fantasyName: String!
+  realName: String!
+  vertical: String!
+  CUIT: String!
+  AFIPCondition: AFIPConditionEnum!
+  address: AddressInput!
+}
+
+extend type Query {
+  business(id: ID!): Business!
+}
+
+extend type Mutation {
+  createBusiness(input: CreateBusinessInput!): Business!
+}
