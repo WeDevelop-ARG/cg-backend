@@ -5,6 +5,7 @@ import { createServer } from 'http'
 import * as models from '~/src/models'
 import jwtAuth from './middlewares/jwtAuth'
 import bodyParser from 'body-parser'
+import cors from 'cors'
 
 import schema from './schema'
 
@@ -14,7 +15,13 @@ const port = process.env.PORT || 3001
 
 const app = express()
 
+const corsOptions = {
+  origin: '*',
+  credentials: true
+}
+
 app.use(jwtAuth)
+app.use(cors(corsOptions))
 app.use(bodyParser.json({ limit: '5mb' }))
 
 const server = new ApolloServer({
