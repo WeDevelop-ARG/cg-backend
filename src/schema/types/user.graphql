@@ -1,6 +1,5 @@
 type User {
   id: ID!
-  name: String!
   email: String!
   subscribedGroups: [Group]!
   publishedGroups: [Group]!
@@ -13,7 +12,6 @@ input LoginInput {
 }
 
 input SignupInput {
-  name: String!
   email: String!
   password: String!
 }
