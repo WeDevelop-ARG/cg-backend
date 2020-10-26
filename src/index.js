@@ -16,7 +16,7 @@ const port = process.env.PORT || 3001
 const app = express()
 
 const corsOptions = {
-  origin: '*',
+  origin: process.env.SITE_URL,
   credentials: true
 }
 
