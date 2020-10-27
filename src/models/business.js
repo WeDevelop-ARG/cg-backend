@@ -12,8 +12,8 @@ export default (sequelize, DataTypes) => {
   })
 
   Business.associate = (models) => {
-    Business.belongsTo(models.legalInformation)
-    Business.belongsTo(models.physicalAddress, {
+    Business.LegalInformation = Business.belongsTo(models.legalInformation)
+    Business.RealAddress = Business.belongsTo(models.physicalAddress, {
       foreignKey: 'physicalAddressId',
       as: 'realAddress'
     })

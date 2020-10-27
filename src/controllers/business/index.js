@@ -1,3 +1,5 @@
+import { isEmpty } from 'lodash'
+
 export const getRealName = async (obj) => {
   const legalInformation = await obj.getLegalInformation()
 
@@ -35,25 +37,34 @@ export const createBusiness = (obj, { input }, { models }) => {
       address: addressInput
     } = input
 
-    const address = await models.physicalAddress.create(addressInput, { transaction })
-
-    const legalInformation = await models.legalInformation.create({
-      businessName,
-      businessVertical,
-      CUIT: Number(CUIT),
-      AFIPCondition,
-      physicalAddressId: address.id
-    }, { transaction })
-
     const business = await models.business.create({
       fantasyName,
-      physicalAddressId: address.id
-    }, { transaction })
-
-    await business.setLegalInformation(legalInformation, { transaction })
+      realAddress: addressInput,
+      legalInformation: {
+        businessName,
+        businessVertical,
+        CUIT: Number(CUIT),
+        AFIPCondition,
+        physicalAddress: addressInput
+      }
+    }, {
+      transaction,
+      include: [{
+        association: models.business.LegalInformation,
+        include: [models.legalInformation.PhysicalAddress]
+      }, {
+        association: models.business.RealAddress
+      }]
+    })
 
     return business
   })
 }
 
-export const getBusinessById = (obj, { id }, { models }) => models.business.findByPk(id)
+export const getBusinessById = async (obj, { id }, { models }) => {
+  const business = await models.business.findByPk(id)
+
+  if (isEmpty(business)) throw new Error('Provided Business ID was not found in the database.')
+
+  return business
+}
