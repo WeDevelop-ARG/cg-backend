@@ -5,7 +5,7 @@ export default (sequelize, DataTypes) => {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
-      allowNull: false
+      defaultValue: DataTypes.UUIDV4
     },
     businessId: {
       type: DataTypes.UUID,
@@ -33,7 +33,7 @@ export default (sequelize, DataTypes) => {
 
   PayoutMethod.associate = (models) => {
     PayoutMethod.belongsTo(models.business)
-    PayoutMethod.hasOne(models.mercadoPagoPayoutMethod, {
+    PayoutMethod.MercadoPagoPayoutMethod = PayoutMethod.hasOne(models.mercadoPagoPayoutMethod, {
       foreignKey: 'payoutMethodId'
     })
   }
