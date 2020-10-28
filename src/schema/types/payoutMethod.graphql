@@ -4,11 +4,15 @@ type PayoutMethod {
   type: String!
 }
 
-input CreatePayoutMethodInput {
+type MercadoPagoPayoutMethod {
+  id: ID!
+}
+
+input CreateMercadoPagoPayoutMethodInput {
+  # TODO add MP specific fields for creation
   businessId: ID!
-  type: String!
 }
 
 extend type Mutation {
-  createPayoutMethod(input: CreatePayoutMethodInput!): PayoutMethod!
+  createMercadoPagoPayoutMethod(input: CreateMercadoPagoPayoutMethodInput!): MercadoPagoPayoutMethod!
 }

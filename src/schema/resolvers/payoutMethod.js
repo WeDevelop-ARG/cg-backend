@@ -5,7 +5,7 @@ const resolvers = {
     business: payoutMethodController.getBusiness
   },
   Mutation: {
-    createPayoutMethod: payoutMethodController.createPayoutMethod
+    createMercadoPagoPayoutMethod: payoutMethodController.createMercadoPagoPayoutMethod
   }
 }
 

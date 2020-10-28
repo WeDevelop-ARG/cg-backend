@@ -3,7 +3,7 @@ export default (sequelize, DataTypes) => {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
-      allowNull: false
+      defaultValue: DataTypes.UUIDV4
     },
     payoutMethodId: {
       type: DataTypes.UUID,
@@ -22,7 +22,7 @@ export default (sequelize, DataTypes) => {
   }
 
   MercadoPagoPayoutMethod.associate = (models) => {
-    MercadoPagoPayoutMethod.belongsTo(models.payoutMethod)
+    MercadoPagoPayoutMethod.PayoutMethod = MercadoPagoPayoutMethod.belongsTo(models.payoutMethod)
   }
 
   return MercadoPagoPayoutMethod
