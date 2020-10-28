@@ -3,7 +3,7 @@ type Business {
   fantasyName: String!
   realName: String!
   vertical: String!
-  CUIT: String!
+  CUIT: BigInt!
   AFIPCondition: AFIPConditionEnum!
   address: Address!
 }
@@ -17,7 +17,7 @@ input CreateBusinessInput {
   fantasyName: String!
   realName: String!
   vertical: String!
-  CUIT: String!
+  CUIT: BigInt!
   AFIPCondition: AFIPConditionEnum!
   address: AddressInput!
 }
