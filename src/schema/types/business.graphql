@@ -28,4 +28,5 @@ extend type Query {
 
 extend type Mutation {
   createBusiness(input: CreateBusinessInput!): Business!
+  setDefaultPayoutMethod(businessId: ID!, payoutMethodId: ID!): Boolean!
 }

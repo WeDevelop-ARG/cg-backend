@@ -68,3 +68,15 @@ export const getBusinessById = async (obj, { id }, { models }) => {
 
   return business
 }
+
+export const setDefaultPayoutMethod = async (obj, { businessId, payoutMethodId }, { models }) => {
+  const business = await models.business.findByPk(businessId)
+
+  if (isEmpty(business)) throw new Error('Provided Business ID was not found in the database.')
+
+  const payoutMethod = await models.business.findByPk(payoutMethodId)
+
+  if (isEmpty(payoutMethod)) throw new Error('Provided PayoutMethod ID was not found in the database.')
+
+  return await business.setDefaultPayoutMethod(payoutMethod)
+}

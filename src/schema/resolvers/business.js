@@ -12,7 +12,8 @@ const resolvers = {
     business: businessController.getBusinessById
   },
   Mutation: {
-    createBusiness: businessController.createBusiness
+    createBusiness: businessController.createBusiness,
+    setDefaultPayoutMethod: businessController.setDefaultPayoutMethod
   }
 }
 

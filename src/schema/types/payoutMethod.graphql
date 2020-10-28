@@ -1,0 +1,14 @@
+type PayoutMethod {
+  id: ID!
+  business: Business!
+  type: String!
+}
+
+input CreatePayoutMethodInput {
+  businessId: ID!
+  type: String!
+}
+
+extend type Mutation {
+  createPayoutMethod(input: CreatePayoutMethodInput!): PayoutMethod!
+}
