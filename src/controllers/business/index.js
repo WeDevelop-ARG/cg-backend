@@ -43,7 +43,7 @@ export const createBusiness = (obj, { input }, { models }) => {
       legalInformation: {
         businessName,
         businessVertical,
-        CUIT: Number(CUIT),
+        CUIT,
         AFIPCondition,
         physicalAddress: addressInput
       }
