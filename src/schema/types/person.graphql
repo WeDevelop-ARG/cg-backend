@@ -1,0 +1,21 @@
+type Person {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  address: Address!
+}
+
+input PersonalInformationInput {
+ firstName: String!
+ lastName: String!
+ address: AddressInput!
+ dni: Int
+}
+
+extend type Query {
+  getPersonalInformation(userId: ID!): Person!
+}
+
+extend type Mutation {
+  setPersonalInformation(userId: ID!, personalInformation: PersonalInformationInput!): Person!
+}
