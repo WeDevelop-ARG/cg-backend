@@ -13,7 +13,7 @@ const resolvers = {
   },
   Mutation: {
     createBusiness: businessController.createBusiness,
-    setDefaultPayoutMethod: businessController.setDefaultPayoutMethod
+    updateBusiness: businessController.updateBusiness
   }
 }
 

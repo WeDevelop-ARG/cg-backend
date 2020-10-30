@@ -22,11 +22,16 @@ input CreateBusinessInput {
   address: AddressInput!
 }
 
+input UpdateBusinessInput {
+  id: ID!
+  defaultPayoutMethodId: ID
+}
+
 extend type Query {
   business(id: ID!): Business!
 }
 
 extend type Mutation {
   createBusiness(input: CreateBusinessInput!): Business!
-  setDefaultPayoutMethod(businessId: ID!, payoutMethodId: ID!): Boolean!
+  updateBusiness(input: UpdateBusinessInput!): Business!
 }
