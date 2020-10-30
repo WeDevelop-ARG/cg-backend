@@ -26,7 +26,7 @@ export const getAFIPCondition = async (obj) => {
 
 export const getAddress = (obj) => obj.getRealAddress()
 
-export const createBusiness = (obj, { userId, businessInformation }, { models }) => {
+export const createBusiness = (obj, { input }, { models, currentUser }) => {
   return models.sequelize.transaction(async (transaction) => {
     const {
       fantasyName,
@@ -35,11 +35,9 @@ export const createBusiness = (obj, { userId, businessInformation }, { models })
       CUIT,
       AFIPCondition,
       address: addressInput
-    } = businessInformation
+    } = input
 
-    const user = await models.user.findByPk(userId, { transaction })
-
-    if (isEmpty(user)) throw new Error('Provided User ID was not found in the database.')
+    if (isEmpty(currentUser)) throw new Error('An existing user is required to create a business.')
 
     const business = await models.business.create({
       fantasyName,
@@ -61,7 +59,7 @@ export const createBusiness = (obj, { userId, businessInformation }, { models })
       }]
     })
 
-    await business.setUsers(user, { transaction })
+    await business.setUsers(currentUser, { transaction })
 
     return business
   })

@@ -27,5 +27,5 @@ extend type Query {
 }
 
 extend type Mutation {
-  createBusiness(userId: ID!, businessInformation: CreateBusinessInput!): Business!
+  createBusiness(input: CreateBusinessInput!): Business!
 }
