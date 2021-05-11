@@ -32,7 +32,7 @@
     "graphql-resolvers": "^0.4.2",
     "http": "0.0.0",
     "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "mercadopago": "^1.3.2",
     "pg": "^7.18.2",
     "sequelize": "^5.22.3",
